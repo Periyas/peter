@@ -18,8 +18,9 @@ p *a1;
 p *aux;
 p *aux2XD;
 
+int n = 0;
 int registrar(){
-		system("cls");
+		
 	if(a1==NULL){
 	a1 = (struct p *) malloc (sizeof(struct p));
 	cout<<"Ingresa la CC: ";
@@ -27,8 +28,11 @@ int registrar(){
 	cout<<"Ingresa el nombre: ";
 	cin>>a1->nombre;	
 	a1->EQS = NULL;		
+	
+	n=n+1;
+	
 	}else{
- 
+
 	aux = (struct p *) malloc (sizeof(struct p));
 	cout<<"Ingresa la CC: ";
 	cin>>aux->cedula;
@@ -37,30 +41,40 @@ int registrar(){
 	aux->EQS = NULL;
 	aux2XD=a1; 
 	while (aux2XD->EQS!=NULL)
+	aux2XD=aux2XD->EQS;	
 	aux2XD->EQS = aux;
 	aux2XD = aux = NULL;
 	free(aux);
 	free(aux2XD);
+
+	n=n+1;
+
 	}	
 	return 0;
 }
 
 int mostrar(){
-		system("cls");
+		
 		int opcc;
+		int i;
 	for(aux=a1; aux!=NULL; aux=aux->EQS){
 			cout<<"CC: "<<aux->cedula<<endl;
-		
+
 			cout<<"Nombre del Paciente: "<<aux->nombre<<endl;
-		
+
 			cout<<"\n";
-	}
+			
+			
+		}
+	cout<<"los pacientes son "<<n<<" \n";
 	cout<<"Escriba 1 para continuar: ";
 	cin>>opcc;
 	while(opcc = 1){
-	
+
+
 	return 0;
-	}
+}
+
 }
 
 int menu(){
@@ -86,12 +100,12 @@ int menu(){
 			case 3:;
 					break;
 		}
-		
+
 	}while(opc!=3);
 	return 0;
 }
 
 int main(){
-	
+
    menu();	
 }
